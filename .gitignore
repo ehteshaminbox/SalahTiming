@@ -1,0 +1,88 @@
+## Ignore Visual Studio temporary files, build results, and user-specific files
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uild[Ll]og.*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Visual Studio
+.vs/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others
+_ReSharper*/
+*.ncrunch*
+*.ndpend*
+*.sqlproj.user
+*.cache
+*.dbmdl
+*.bak
+*.log
+
+# IIS Express
+.vsconfig
+*.vspscc
+*.vssscc
+
+# Publish folder
+publish/
+
+# Logs
+*.log
+
+# Backup & crash files
+*.bak
+*.swp
+*.swo
+
+# Package folders
+packages/
+*.nupkg
+*.snupkg
+
+# NuGet
+project.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# JetBrains Rider
+.idea/
+
+# Node modules (if using Node.js)
+node_modules/
+
+# Yarn
+.yarn/
+
+# DotCover
+*.dotCover
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
