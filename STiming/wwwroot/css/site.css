@@ -1,0 +1,827 @@
+﻿/* New Color Palette */
+:root {
+    --primary-color: #4CAF50; /* A fresh green, like nature/growth */
+    --primary-dark: #388E3C; /* Darker green for hover/active states */
+    --secondary-color: #607D8B; /* A subtle blue-grey for secondary elements */
+    --accent-color: #FFC107; /* Amber for highlights/warnings */
+    --background-light: #F8F9FA; /* Very light grey background */
+    --background-card: #FFFFFF; /* White for cards/containers */
+    --text-dark: #212529; /* Dark text for readability */
+    --text-light: #6C757D; /* Lighter text for secondary info */
+    --border-color: #DEE2E6; /* Light border */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-strong: rgba(0, 0, 0, 0.25); /* Stronger shadow for active/modal */
+}
+
+/* Basic body and container styling */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.6; /* Increased line height for better readability */
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    margin: 20px auto;
+    background-color: var(--background-card);
+    padding: 30px; /* Consistent padding all around */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow-light); /* Slightly more prominent overall shadow */
+    box-sizing: border-box;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; /* Vertical padding 15px, horizontal 30px to match container's default padding */
+    margin-bottom: 25px; /* Space below header */
+    border-bottom: 1px solid var(--border-color); /* Keep border for separation */
+    position: relative;
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark)); /* Attractive gradient */
+    color: white; /* Text color for header */
+    border-radius: 10px; /* Slightly more rounded corners to match nav */
+    box-shadow: 0 4px 10px var(--shadow-medium); /* Header shadow */
+    z-index: 1; /* Ensure header is above content */
+    width: 95%; /* Adjusted width to 95% */
+    margin-left: auto; /* Center the header */
+    margin-right: auto; /* Center the header */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+    header h1 {
+        margin: 0;
+        color: white; /* White text for gradient background */
+        font-size: 1.68em; /* Reduced to 60% of 2.8em (2.8 * 0.6 = 1.68) */
+        font-weight: 800; /* Extra bold */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Slightly reduced text shadow for smaller text */
+    }
+
+/* Auth status (login/logout link/button) in header */
+#auth-status {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Increased gap */
+    font-size: 0.8em; /* Reduced to 60% of 1em (1 * 0.6 = 0.6, but 0.8 is more readable) */
+    color: rgba(255, 255, 255, 0.9); /* Lighter text for header background */
+}
+
+    /* Universal transition for interactive elements */
+    #auth-status #logout-btn,
+    #login-section button,
+    #save-edit-btn,
+    .view-location-btn,
+    .edit-btn,
+    nav#main-nav ul li a,
+    .grid-item {
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        /* Hover effects */
+        #auth-status #logout-btn:hover,
+        #login-section button:hover,
+        #save-edit-btn:hover,
+        .view-location-btn:hover,
+        .edit-btn:hover,
+        nav#main-nav ul li a:hover,
+        nav#main-nav ul li a.active {
+            transform: translateY(-2px); /* More pronounced lift effect */
+            box-shadow: 0 5px 12px var(--shadow-medium); /* Stronger shadow on hover */
+        }
+
+        /* Active/Press effects */
+        #auth-status #logout-btn:active,
+        #login-section button:active,
+        #save-edit-btn:active,
+        .view-location-btn:active,
+        .edit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px var(--shadow-light);
+        }
+
+/* Login form specific styling (when displayed on /Account/Login) */
+#login-page {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 25px;
+    background-color: var(--background-card);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+    #login-page h2 {
+        margin-bottom: 25px;
+        color: var(--primary-dark);
+        font-size: 2em;
+        font-weight: 700;
+    }
+
+#login-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: #FDFDFD;
+}
+
+#login-section .form-group {
+    text-align: left;
+}
+
+#login-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95em;
+}
+
+#login-section input[type="text"],
+#login-section input[type="password"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#login-section button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05em;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    margin-top: 10px;
+}
+
+#login-section .error {
+    color: #E53935;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Navigation styling */
+nav#main-nav {
+    margin-top: 20px; /* Add some space between header and nav */
+}
+
+    nav#main-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px var(--shadow-light);
+    }
+
+        nav#main-nav ul li {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+            nav#main-nav ul li a {
+                display: block;
+                color: white;
+                padding: 12px 15px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1em;
+            }
+
+                nav#main-nav ul li a:hover,
+                nav#main-nav ul li a.active {
+                    background-color: var(--primary-color);
+                }
+
+/* Content area styling */
+.content-section {
+    padding: 25px;
+    background-color: var(--background-card);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+/* Home page grid styling */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: #E8F5E9;
+    color: var(--primary-dark);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+    .grid-item:hover {
+        background-color: #C8E6C9;
+    }
+
+/* Table styling */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.9em;
+    min-width: 550px;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 1.4;
+}
+
+th {
+    background-color: #F5F5F5;
+    color: var(--text-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+/* Make Time Left column bold */
+.time-left {
+    font-weight: bold;
+}
+
+/* Column Width Adjustments */
+th:nth-child(1), td:nth-child(1) { /* Time Left */
+    width: 15%;
+    white-space: nowrap;
+}
+
+th:nth-child(2), td:nth-child(2) { /* Time */
+    width: 12%;
+    white-space: nowrap;
+}
+
+th:nth-child(3), td:nth-child(3) { /* Masjid Name */
+    width: 38%;
+}
+
+th:nth-child(4), td:nth-child(4) { /* Location */
+    width: 25%;
+}
+
+th:nth-child(5), td:nth-child(5) { /* Actions (if present) */
+    width: 10%;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #FDFDFD;
+}
+
+tbody tr:hover {
+    background-color: #E0E0E0;
+}
+
+/* Edit button in table */
+.edit-btn {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+    .edit-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none; /* Changed from flex to none */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+    .modal.show { /* This class will be added by JS to show the modal */
+        opacity: 1;
+        visibility: visible;
+        display: flex; /* Set to flex when shown */
+    }
+
+.modal-content {
+    background-color: var(--background-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-strong);
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.3s ease-out;
+    box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-button {
+    color: var(--text-light);
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .close-button:hover,
+    .close-button:focus {
+        color: var(--text-dark);
+    }
+
+#edit-form p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#edit-form label {
+    flex: 0 0 100px;
+    text-align: right;
+    margin-right: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95em;
+}
+
+#edit-form input[type=text],
+#edit-form select {
+    flex: 1 1 auto;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+#edit-form p span {
+    margin: 0 4px;
+}
+
+#edit-form select.time-dropdown {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 90px;
+}
+
+#save-edit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05em;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+    #save-edit-btn:hover {
+        background-color: var(--primary-dark);
+    }
+
+/* Styles for time status */
+.past-time {
+    background-color: #ECEFF1 !important;
+    color: var(--text-light);
+}
+
+.upcoming-time {
+    background-color: #E8F5E9 !important;
+}
+
+.less-than-30-minutes {
+    background-color: #FFFF00 !important;
+}
+
+/* Style for the new View Location button */
+.view-location-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    box-shadow: 0 2px 5px var(--shadow-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
+}
+
+    .view-location-btn:hover {
+        background-color: #455A64;
+    }
+
+    .view-location-btn:disabled {
+        background-color: #B0BEC5;
+        cursor: not-allowed;
+    }
+
+/* Toast Notification Styles */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast-message {
+    background-color: var(--text-dark);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    font-size: 1em;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+    max-width: 320px;
+    word-wrap: break-word;
+    pointer-events: auto;
+}
+
+    .toast-message.success {
+        background-color: var(--primary-color);
+    }
+
+    .toast-message.error {
+        background-color: #D32F2F;
+    }
+
+    .toast-message.warning {
+        background-color: var(--accent-color);
+        color: var(--text-dark);
+    }
+
+    .toast-message.info {
+        background-color: #03A9F4;
+    }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    header {
+        padding: 15px 20px;
+        /* Re-adjust margins for smaller screens to match container padding */
+        margin-top: -15px;
+        margin-left: -15px;
+        margin-right: -15px;
+        width: calc(100% + 30px);
+    }
+
+        header h1 {
+            font-size: 2em;
+        }
+
+    #auth-status {
+        margin-top: 8px;
+    }
+
+    #login-page {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    #login-section form {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    #login-section label {
+        font-size: 0.85em;
+    }
+
+    #login-section input[type="text"],
+    #login-section input[type="password"] {
+        padding: 7px 10px;
+        font-size: 0.9em;
+    }
+
+    #login-section button {
+        padding: 10px 18px;
+        font-size: 0.95em;
+    }
+
+    nav#main-nav ul {
+        margin-bottom: 15px;
+    }
+
+        nav#main-nav ul li a {
+            padding: 8px 10px;
+            font-size: 0.9em;
+        }
+
+    .content-section {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .grid-container {
+        gap: 10px;
+        padding: 5px;
+    }
+
+    .grid-item {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+
+    table {
+        font-size: 0.8em;
+        min-width: 360px;
+    }
+
+    th, td {
+        padding: 5px 8px;
+    }
+
+    .edit-btn, .view-location-btn {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+
+    #edit-form label {
+        flex: 0 0 60px;
+        margin-right: 8px;
+        font-size: 0.85em;
+    }
+
+    #edit-form input[type=text],
+    #edit-form select {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+
+        #edit-form select.time-dropdown {
+            max-width: 65px;
+        }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .close-button {
+        font-size: 24px;
+        top: 8px;
+        right: 10px;
+    }
+
+    #toast-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+
+    .toast-message {
+        width: calc(100% - 20px);
+        max-width: none;
+        padding: 10px 15px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px;
+        margin: 8px auto;
+    }
+
+    header {
+        padding: 10px 15px;
+        /* Re-adjust margins for smaller screens to match container padding */
+        margin-top: -10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        width: calc(100% + 20px);
+    }
+
+        header h1 {
+            font-size: 1.4em;
+        }
+
+    #auth-status {
+        gap: 5px;
+        font-size: 0.8em;
+    }
+
+        #auth-status #logout-btn {
+            padding: 5px 10px;
+            font-size: 0.8em;
+        }
+
+    #login-page {
+        margin: 15px auto;
+        padding: 10px;
+    }
+
+        #login-page h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+    #login-section form {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    #login-section label {
+        font-size: 0.75em;
+    }
+
+    #login-section input[type="text"],
+    #login-section input[type="password"] {
+        padding: 6px 8px;
+        font-size: 0.8em;
+    }
+
+    #login-section button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    nav#main-nav ul {
+        margin-bottom: 10px;
+    }
+
+        nav#main-nav ul li a {
+            padding: 6px 8px;
+            font-size: 0.85em;
+        }
+
+    .content-section {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .grid-container {
+        gap: 8px;
+        padding: 4px;
+    }
+
+    .grid-item {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+
+    table {
+        font-size: 0.6em;
+        min-width: 280px;
+    }
+
+    th, td {
+        padding: 3px 5px;
+    }
+
+    .edit-btn, .view-location-btn {
+        font-size: 0.6em;
+        padding: 3px 5px;
+    }
+
+    #edit-form label {
+        flex: 0 0 50px;
+        font-size: 0.7em;
+    }
+
+    #edit-form input[type=text],
+    #edit-form select {
+        padding: 5px 6px;
+        font-size: 0.7em;
+    }
+
+        #edit-form select.time-dropdown {
+            max-width: 55px;
+        }
+
+    .modal-content {
+        padding: 12px;
+    }
+
+    .close-button {
+        font-size: 18px;
+    }
+
+    .toast-message {
+        font-size: 0.7em;
+        padding: 8px 10px;
+    }
+}
+
+#edit-modal.show {
+    display: block !important;
+}
+#edit-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* backdrop */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+}

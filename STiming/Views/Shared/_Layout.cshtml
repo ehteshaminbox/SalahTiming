@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamptee Salah Timings</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kamptee Salah Timings</h1>
+            <div id="auth-status">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span id="logged-in-user">Logged in as: @User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
+                        <button type="submit" id="logout-btn">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    @* Login link is removed from here. User must navigate to /Account/Login directly. *@
+                }
+            </div>
+        </header>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#" data-tab="tab1">Fajr</a></li>
+                <li><a href="#" data-tab="tab2">Dhuhr</a></li>
+                <li><a href="#" data-tab="tab6">Jumah</a></li>
+                <li><a href="#" data-tab="tab3">Asr</a></li>
+                <li><a href="#" data-tab="tab4">Maghrib</a></li>
+                <li><a href="#" data-tab="tab5">Isha</a></li>
+                <li><a href="#" data-tab="home">Home</a></li>
+            </ul>
+        </nav>
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+        <div id="edit-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="edit-modal-title">Edit Timing</h3> @* Added ID for dynamic update *@
+                <form id="edit-form">
+                    <p><label for="edit-srno">Sr No:</label> <input type="text" id="edit-srno" readonly></p>
+                    <p><label for="edit-title">Masjid Name:</label> <input type="text" id="edit-title" readonly></p>
+                    <p>
+                        <label for="edit-time-hour">Time:</label>
+                        <select id="edit-time-hour" class="time-dropdown"></select>
+                        <span>:</span>
+                        <select id="edit-time-minute" class="time-dropdown"></select>
+                        <select id="edit-time-ampm" class="time-dropdown"></select>
+                    </p>
+                    <p><label for="edit-location">Location Name:</label> <input type="text" id="edit-location"></p>
+                    <p><label for="edit-map-url">Map URL:</label> <input type="text" id="edit-map-url" placeholder="http:// or https://"></p>
+                    <input type="hidden" id="edit-tab-id">
+                    <input type="hidden" id="edit-row-index">
+                    <button type="button" id="save-edit-btn">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
