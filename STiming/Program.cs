@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-using SalahTimingsApp.Services; // Make sure to include this namespace
+using SalahTimingsApp.Services;
+using STiming.Services; // Make sure to include this namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews();
 // This tells the DI container how to create an instance of FileManager
 // Scoped: A new instance is created once per client request (HTTP request).
 builder.Services.AddScoped<FileManager>();
+builder.Services.AddSingleton<ActivityLogger>(); // Register as a singleton
+builder.Services.AddControllers();
 
 // Configure Cookie Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
