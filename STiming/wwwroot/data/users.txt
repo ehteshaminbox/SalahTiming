@@ -1,2 +1,3 @@
-admin,password123
-user,pass
+admin,K@mptee@786
+editor1,editor1@786
+editor2,editor2@786

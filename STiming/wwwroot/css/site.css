@@ -263,7 +263,7 @@ table {
     box-shadow: 0 4px 12px var(--shadow-light);
     border-radius: 10px;
     overflow: hidden;
-    font-size: 0.9em;
+    font-size: 0.95em; /* Adjusted for better readability */
     min-width: 550px;
 }
 
@@ -280,7 +280,7 @@ th {
     color: var(--text-dark);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.85em;
+    font-size: 0.9em; /* Adjusted to be slightly larger for prominence */
     white-space: nowrap;
 }
 
@@ -348,7 +348,7 @@ tbody tr:hover {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    padding: 15px;
+    padding: 15px; /* Ensures padding on very small screens */
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
@@ -367,7 +367,7 @@ tbody tr:hover {
     border-radius: 12px;
     box-shadow: 0 10px 30px var(--shadow-strong);
     position: relative;
-    width: 100%;
+    width: 90%; /* Adjusted for better responsiveness on small screens */
     max-width: 500px;
     animation: fadeIn 0.3s ease-out;
     box-sizing: border-box;
@@ -405,7 +405,7 @@ tbody tr:hover {
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
 #edit-form label {
@@ -620,7 +620,7 @@ tbody tr:hover {
     }
 
     table {
-        font-size: 0.8em;
+        font-size: 0.85em; /* Adjusted for better readability on tablets */
         min-width: 360px;
     }
 
@@ -633,30 +633,58 @@ tbody tr:hover {
         padding: 4px 8px;
     }
 
-    #edit-form label {
-        flex: 0 0 60px;
-        margin-right: 8px;
-        font-size: 0.85em;
-    }
-
-    #edit-form input[type=text],
-    #edit-form select {
-        padding: 6px 8px;
-        font-size: 0.8em;
-    }
-
-        #edit-form select.time-dropdown {
-            max-width: 65px;
-        }
-
+    /* Modal specific adjustments for 768px and below */
     .modal-content {
         padding: 20px;
+        width: 95%; /* Make it take more width on smaller tablets */
     }
 
-    .close-button {
-        font-size: 24px;
-        top: 8px;
-        right: 10px;
+    #edit-form p {
+        flex-direction: column; /* Stack label and input vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+        /* Override for the specific paragraph containing time dropdowns */
+        #edit-form p:has(select.time-dropdown) {
+            flex-direction: row; /* Keep them in a row */
+            justify-content: space-between; /* Distribute space */
+            gap: 5px; /* Small gap between dropdowns */
+            width: 100%; /* Ensure the container takes full width */
+            flex-wrap: nowrap; /* Prevent wrapping of time dropdowns themselves */
+        }
+
+    #edit-form label {
+        flex: unset; /* Remove fixed flex basis */
+        width: 100%; /* Take full width */
+        text-align: left; /* Align label text to left */
+        margin-right: 0;
+        margin-bottom: 5px; /* Add space below label */
+        font-size: 0.9em; /* Slightly larger for readability */
+    }
+    /* Specific adjustment for the label of the time inputs */
+    #edit-form p:has(select.time-dropdown) label {
+        margin-bottom: 10px; /* More space for the label above the dropdowns */
+    }
+
+
+    #edit-form input[type=text],
+    #edit-form select:not(.time-dropdown) { /* Target regular selects, not time dropdowns */
+        width: 100%; /* Take full width */
+        padding: 8px 10px; /* Adjust padding */
+        font-size: 0.9em; /* Adjust font size */
+    }
+
+    #edit-form select.time-dropdown {
+        width: calc(33.33% - 8px); /* Adjusted width for 3 dropdowns with some gap */
+        max-width: none; /* Remove max-width constraint */
+        flex-grow: 1; /* Allow them to grow */
+        padding: 6px 8px; /* Slightly reduced padding */
+        font-size: 0.85em; /* Ensure font size is appropriate */
+        box-sizing: border-box; /* Ensure padding/border included in width */
+    }
+
+    #edit-form p:has(select.time-dropdown) span {
+        display: none; /* Hide the ':' separator */
     }
 
     #toast-container {
@@ -762,7 +790,7 @@ tbody tr:hover {
     }
 
     table {
-        font-size: 0.6em;
+        font-size: 0.7em; /* Adjusted for better readability on mobile */
         min-width: 280px;
     }
 
@@ -775,23 +803,31 @@ tbody tr:hover {
         padding: 3px 5px;
     }
 
+    /* Modal specific adjustments for 480px and below */
+    .modal-content {
+        padding: 15px; /* Slightly more padding than 12px for better feel */
+        width: 95%; /* Ensure it takes full width on small phones */
+    }
+
     #edit-form label {
-        flex: 0 0 50px;
-        font-size: 0.7em;
+        font-size: 0.85em; /* Adjusted for smaller screens */
     }
 
     #edit-form input[type=text],
-    #edit-form select {
-        padding: 5px 6px;
-        font-size: 0.7em;
+    #edit-form select:not(.time-dropdown) {
+        padding: 6px 8px;
+        font-size: 0.85em; /* Adjusted for smaller screens */
     }
 
-        #edit-form select.time-dropdown {
-            max-width: 55px;
-        }
+    #edit-form select.time-dropdown {
+        width: calc(33.33% - 6px); /* Adjusted width for 3 dropdowns with smaller gap */
+        padding: 4px 6px; /* Further reduced padding */
+        font-size: 0.8em; /* Adjusted font size for very small screens */
+        box-sizing: border-box; /* Ensure padding/border included in width */
+    }
 
-    .modal-content {
-        padding: 12px;
+    #edit-form p:has(select.time-dropdown) {
+        gap: 3px; /* Even smaller gap */
     }
 
     .close-button {
@@ -807,6 +843,7 @@ tbody tr:hover {
 #edit-modal.show {
     display: block !important;
 }
+
 #edit-modal {
     position: fixed;
     z-index: 1000;
